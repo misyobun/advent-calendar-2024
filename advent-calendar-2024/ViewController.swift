@@ -15,14 +15,14 @@ class ViewController: UIViewController, WKScriptMessageHandler {
         // JavaScriptコードを注入
         let jsCode = """
         window.followToggleExample = {
-          follow: function(publicCalendarId) {
+          follow: (publicCalendarId) => {
             return new Promise((resolve, reject) => {
               window.__resolveFollowToggleCalendar = resolve;
               window.__rejectFollowToggleCalendar = reject;
               window.webkit.messageHandlers.follow.postMessage(publicCalendarId);
             });
           },
-          isFollowing: function(options = {}) {
+          isFollowing: (options = {}) => {
             return window.webkit.messageHandlers.isFollowing.postMessage(options);
           }
         };

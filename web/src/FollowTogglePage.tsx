@@ -35,19 +35,13 @@ const FollowToggleButton: React.FC<FollowToggleButtonProps> = ({ isFollowed, onC
 const FollowTogglePage: React.FC = () => {
   const [isFollowed, setIsFollowed] = useState<boolean>(false);
 
-  const handleFollow = () => {
-    if (window.followToggleExample) {
-      window.followToggleExample
-        .follow("sample-id")
-        .then(() => {
-          console.log("Swift側でのフォロー・フォロー解除処理完了")
-          return window.followToggleExample?.isFollowing();
-        })
-        .then((following) => {
-          console.log("JS側でのフォロー状態を元に再描画")
-          setIsFollowed(!!following);
-        })
-        .catch(() => setIsFollowed(false));
+  const onFollowToggleButtonClick = async () => {
+    try {
+      await window.followToggleExample?.follow("sample-id");
+      const following = await window.followToggleExample?.isFollowing();
+      setIsFollowed(!!following);
+    } catch (e) {
+      setIsFollowed(false);
     }
   };
 
@@ -55,7 +49,7 @@ const FollowTogglePage: React.FC = () => {
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="bg-white p-8 rounded-lg shadow-lg text-center">
         <h1 className="text-2xl font-bold mb-4">フォロー操作</h1>
-        <FollowToggleButton isFollowed={isFollowed} onClick={handleFollow} />
+        <FollowToggleButton isFollowed={isFollowed} onClick={onFollowToggleButtonClick} />
       </div>
     </div>
   );
