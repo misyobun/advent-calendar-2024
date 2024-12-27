@@ -1,5 +1,5 @@
 # advent-calendar-2024
-これは[株式会社TimeTree Advent Calendar 2024](https://qiita.com/advent-calendar/2024/timetree)の3日目の記事 「WKWebViewを活用したSwiftとJavaScript連携の実装について」のサンプルコードとなります。
+これは[株式会社TimeTree Advent Calendar 2024](https://qiita.com/advent-calendar/2024/timetree)の3日目の記事 [「WKWebViewを活用したSwiftとJavaScript連携の実装について」](https://zenn.dev/timetree/articles/bfec6d4de0bfc3)のサンプルコードとなります。
 
 ## 使い方
 web側をローカルで起動します。
